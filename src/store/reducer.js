@@ -1,3 +1,5 @@
+import store from 'src/store';
+
 /**
  * Initial State
  */
