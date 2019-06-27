@@ -1,5 +1,5 @@
 import React from 'react';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import './dropdown.scss';
 
@@ -30,6 +30,15 @@ class Dropdown extends React.Component {
     );
   }
 }
+
+Dropdown.propTypes = {
+  dropdownValueHasChanged: PropTypes.func.isRequired,
+  dropdownValue: PropTypes.string.isRequired,
+  city: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    label: PropTypes.string,
+  })).isRequired,
+};
 
 
 export default Dropdown;

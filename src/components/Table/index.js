@@ -1,5 +1,5 @@
 import React from 'react';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './table.scss';
 
 // searchDone est un bool issu du store de redux qui permet de savoir si une première recherche
@@ -50,6 +50,26 @@ const Table = ({ users, filteredList, searchDone, fixedCity, fixedInput }) => (
     </table>
   </div>
 );
+
+Table.propTypes = {
+  fixedCity: PropTypes.string.isRequired,
+  fixedInput: PropTypes.string.isRequired,
+  searchDone: PropTypes.bool.isRequired,
+  users: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    ville: PropTypes.string.isRequired,
+    prenom: PropTypes.string.isRequired,
+    nom: PropTypes.string.isRequired,
+    right: PropTypes.string.isRequired,
+  })).isRequired,
+  filteredList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    ville: PropTypes.string.isRequired,
+    prenom: PropTypes.string.isRequired,
+    nom: PropTypes.string.isRequired,
+    right: PropTypes.string.isRequired,
+  })).isRequired,
+};
 
 
 export default Table;

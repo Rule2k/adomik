@@ -1,17 +1,17 @@
 import React from 'react';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import Dropdown from 'src/containers/Dropdown';
 import Search from 'src/containers/Search';
 
 import './form.scss';
 
-const Form = ({ users, searchInput, dropdownValue, filteredUsersList, searchDone, fixedCity, fixedInput }) => {
-
+const Form = ({
+  users, searchInput, dropdownValue, filteredUsersList, searchDone, fixedCity, fixedInput
+}) => {
   // fonction permettant de trier la liste des utilisateurs
   // en fonction de la recherche et de la valeur du dropdown
   // ne renvoie rien si aucun résultat
-
   const getFilteredSearch = () => {
     let currentList = [];
     let filteredList = [];
@@ -61,6 +61,22 @@ const Form = ({ users, searchInput, dropdownValue, filteredUsersList, searchDone
       <button id="button" type="submit">Submit</button>
     </form>
   );
+};
+
+Form.propTypes = {
+  dropdownValue: PropTypes.string.isRequired,
+  searchInput: PropTypes.string.isRequired,
+  fixedCity: PropTypes.func.isRequired,
+  fixedInput: PropTypes.func.isRequired,
+  filteredUsersList: PropTypes.func.isRequired,
+  searchDone: PropTypes.func.isRequired,
+  users: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    ville: PropTypes.string.isRequired,
+    prenom: PropTypes.string.isRequired,
+    nom: PropTypes.string.isRequired,
+    right: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 

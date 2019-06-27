@@ -1,5 +1,5 @@
 import React from 'react';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import './search.scss';
 
@@ -13,5 +13,9 @@ const Search = ({ searchInput, inputChanged }) => {
   );
 };
 
+Search.propTypes = {
+  searchInput: PropTypes.string.isRequired,
+  inputChanged: PropTypes.func.isRequired,
+};
 
 export default Search;
