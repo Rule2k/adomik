@@ -6,6 +6,10 @@ const mapStateToProps = (state, ownProps) => ({
   users: state.users,
   searchInput: state.searchInput,
   dropdownValue: state.dropdownValue,
+  filteredList: state.filteredUsersList,
+  searchDone: state.searchDone,
+  fixedCity: state.fixedCity,
+  fixedInput: state.fixedInput,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({});

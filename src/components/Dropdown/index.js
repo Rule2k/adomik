@@ -14,7 +14,6 @@ class Dropdown extends React.Component {
     const handleNewValue = event => (
       dropdownValueHasChanged(event.target.value)
     );
-    console.log(city);
     return (
       <select id="dropdown" onChange={handleNewValue} value={dropdownValue}>
         <option value="Choisissez une ville" disabled>Choisissez une ville</option>

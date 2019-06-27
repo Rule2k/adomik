@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Form from 'src/components/Form';
+import Form from 'src/containers/Form';
 import Table from 'src/containers/Table';
 import './app.scss';
 
