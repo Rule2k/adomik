@@ -2,14 +2,17 @@
  * Initial State
  */
 const initialState = {
-  message: 'Hello',
-  clic: 0,
+  users: [],
+  components: [],
 };
 
 /**
  * Types
  */
-const DO_SOMETHING = 'DO_SOMETHING';
+export const LOAD_USERS = 'LOAD_USERS';
+export const LOAD_COMPONENTS = 'LOAD_COMPONENTS';
+const USERS_RECEIVED = 'USERS_RECEIVED';
+const COMPONENTS_RECEIVED = 'COMPONENTS_RECEIVED';
 
 /**
  * Traitements
@@ -20,12 +23,16 @@ const DO_SOMETHING = 'DO_SOMETHING';
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case DO_SOMETHING:
+    case USERS_RECEIVED:
       return {
         ...state,
-        clic: state.clic + 1,
+        users: action.users,
       };
-
+    case COMPONENTS_RECEIVED:
+      return {
+        ...state,
+        components: action.components,
+      };
     default:
       return state;
   }
@@ -34,8 +41,22 @@ const reducer = (state = initialState, action = {}) => {
 /**
  * Action Creators
  */
-export const doSomething = () => ({
-  type: DO_SOMETHING,
+export const loadUsers = () => ({
+  type: LOAD_USERS,
+});
+
+export const loadComponents = () => ({
+  type: LOAD_COMPONENTS,
+});
+
+export const usersReceived = users => ({
+  type: USERS_RECEIVED,
+  users,
+});
+
+export const componentsReceived = components => ({
+  type: COMPONENTS_RECEIVED,
+  components,
 });
 
 /**
