@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import Table from 'src/components/Table';
 
 const mapStateToProps = (state, ownProps) => ({
-  users: state.users,
-  searchInput: state.searchInput,
-  dropdownValue: state.dropdownValue,
   filteredList: state.filteredUsersList,
   searchDone: state.searchDone,
   fixedCity: state.fixedCity,

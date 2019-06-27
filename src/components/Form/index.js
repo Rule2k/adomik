@@ -7,8 +7,12 @@ import Search from 'src/containers/Search';
 import './form.scss';
 
 const Form = ({ users, searchInput, dropdownValue, filteredUsersList, searchDone, fixedCity, fixedInput }) => {
+
+  // fonction permettant de trier la liste des utilisateurs
+  // en fonction de la recherche et de la valeur du dropdown
+  // renvoie un tableau vide s'il n'y a aucun résultat
+
   const getFilteredSearch = () => {
-    console.log('getFilteredSearch');
     let currentList = [];
     let filteredList = [];
     let city = '';
@@ -29,10 +33,16 @@ const Form = ({ users, searchInput, dropdownValue, filteredUsersList, searchDone
       });
     }
     else {
-      filteredList = users;
+      return filteredList;
     }
-    return filteredList;
   };
+
+  // preventdefault pour stopper le rechargement de la page
+  // filterUserList pour envoyer la liste filtrée des résultats dans redux
+  // fixedInput pour avoir une valeur fixe d'input dans le store de redux
+  // (sinon celle ci change à chaque input)
+  // fixedCity les mêmes raisons
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const usersList = getFilteredSearch();

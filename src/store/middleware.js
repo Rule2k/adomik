@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  LOAD_COMPONENTS, LOAD_USERS, usersReceived, componentsReceived
+  LOAD_COMPONENTS, LOAD_USERS, usersReceived, componentsReceived,
 } from './reducer';
 
 const url = 'http://localhost:3000/api';
@@ -25,6 +25,7 @@ const Middleware = store => next => (action) => {
       axios.get(`${url}/components`, {
       })
         .then((result) => {
+          // eslint-disable-next-line max-len
           store.dispatch(componentsReceived(result.data.components[0].children[0].children[0].children[0].data));
         })
         .catch((error) => {

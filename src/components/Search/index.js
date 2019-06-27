@@ -4,6 +4,7 @@ import PropsTypes from 'prop-types';
 import './search.scss';
 
 const Search = ({ searchInput, inputChanged }) => {
+  // renvoie la nouvelle valeur d'input
   const inputHasChanged = event => (
     inputChanged(event.target.value)
   );
