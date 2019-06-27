@@ -1,7 +1,7 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
 
-import Dropdown from 'src/components/Dropdown';
+import Dropdown from 'src/containers/Dropdown';
 import Search from 'src/containers/Search';
 
 const Form = () => (

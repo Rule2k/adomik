@@ -5,6 +5,7 @@ const initialState = {
   users: [],
   components: [],
   searchInput: '',
+  dropdownValue: '',
 };
 
 /**
@@ -15,6 +16,7 @@ export const LOAD_COMPONENTS = 'LOAD_COMPONENTS';
 const USERS_RECEIVED = 'USERS_RECEIVED';
 const COMPONENTS_RECEIVED = 'COMPONENTS_RECEIVED';
 const INPUT_HAS_CHANGED = 'INPUT_HAS_CHANGED';
+const DROPDOWN_VALUE_HAS_CHANGED = 'DROPDOWN_VALUE_HAS_CHANGED';
 
 
 /**
@@ -40,6 +42,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         searchInput: action.input,
+      };
+    case DROPDOWN_VALUE_HAS_CHANGED:
+      return {
+        ...state,
+        dropdownValue: action.value,
       };
     default:
       return state;
@@ -72,12 +79,9 @@ export const inputChanged = input => ({
   input,
 });
 
+export const dropdownValueHasChanged = value => ({
+  type: DROPDOWN_VALUE_HAS_CHANGED,
+  value,
+});
 
-/**
- * Selectors
- */
-
-/**
- * Export
- */
 export default reducer;
