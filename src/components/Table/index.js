@@ -10,10 +10,11 @@ import './table.scss';
 
 // si filteredList est vide, nous n'affichons aucun résultat
 // sinon un mapping de la liste des résultat les affiche
+// au lancement de l'application, tous les résultat sont affichés
 
-const Table = ({ filteredList, searchDone, fixedCity, fixedInput }) => (
+const Table = ({ users, filteredList, searchDone, fixedCity, fixedInput }) => (
   <div id="main">
-    {searchDone ? <p>{filteredList.length} résultat{filteredList.length > 1 ? 's' : null} pour {fixedInput} à {fixedCity}</p> : <p>Tapez une recherche</p> }
+    {searchDone && filteredList ? <p>{filteredList.length} résultat{(filteredList.length > 1 ? 's' : null)} pour {fixedInput} à {fixedCity}</p> : <p>Tapez une recherche</p> }
     <table id="table">
       <thead>
         <tr>
@@ -25,7 +26,7 @@ const Table = ({ filteredList, searchDone, fixedCity, fixedInput }) => (
         </tr>
       </thead>
       <tbody>
-        { filteredList
+        { filteredList.length > 0 || searchDone
           ? filteredList.map(user => (
             <tr key={user.id}>
               <td>{user.id}</td>
@@ -35,7 +36,15 @@ const Table = ({ filteredList, searchDone, fixedCity, fixedInput }) => (
               <td>{user.right}</td>
             </tr>
           ))
-          : null
+          : users.map(user => (
+            <tr key={user.id}>
+              <td>{user.id}</td>
+              <td>{user.ville}</td>
+              <td>{user.prenom}</td>
+              <td>{user.nom}</td>
+              <td>{user.right}</td>
+            </tr>
+          ))
         }
       </tbody>
     </table>

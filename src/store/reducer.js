@@ -27,6 +27,7 @@ const FILTERED_USERS_LIST = 'FILTERED_USERS_LIST';
 const SEARCH_DONE = 'SEARCH_DONE';
 const FIXED_INPUT = 'FIXED_INPUT';
 const FIXED_CITY = 'FIXED_CITY';
+const RESET = 'RESET';
 
 /**
  * Traitements
@@ -76,6 +77,17 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         fixedInput: state.searchInput,
+        searchInput: '',
+      };
+    case RESET:
+      return {
+        ...state,
+        searchInput: '',
+        dropdownValue: '',
+        filteredUsersList: [],
+        searchDone: false,
+        fixedCity: '',
+        fixedInput: '',
       };
     default:
       return state;
@@ -129,6 +141,10 @@ export const fixedCity = () => ({
 
 export const fixedInput = () => ({
   type: FIXED_INPUT,
+});
+
+export const reset = () => ({
+  type: RESET,
 });
 
 export default reducer;

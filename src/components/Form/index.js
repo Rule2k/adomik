@@ -10,7 +10,7 @@ const Form = ({ users, searchInput, dropdownValue, filteredUsersList, searchDone
 
   // fonction permettant de trier la liste des utilisateurs
   // en fonction de la recherche et de la valeur du dropdown
-  // renvoie un tableau vide s'il n'y a aucun résultat
+  // ne renvoie rien si aucun résultat
 
   const getFilteredSearch = () => {
     let currentList = [];
@@ -35,6 +35,7 @@ const Form = ({ users, searchInput, dropdownValue, filteredUsersList, searchDone
     else {
       return filteredList;
     }
+    return filteredList;
   };
 
   // preventdefault pour stopper le rechargement de la page
@@ -47,9 +48,11 @@ const Form = ({ users, searchInput, dropdownValue, filteredUsersList, searchDone
     event.preventDefault();
     const usersList = getFilteredSearch();
     filteredUsersList(usersList);
-    searchDone(true);
-    fixedCity();
-    fixedInput();
+    if (searchInput) {
+      fixedCity();
+      fixedInput();
+      searchDone(true);
+    }
   };
   return (
     <form id="form" onSubmit={handleSubmit}>
@@ -58,7 +61,7 @@ const Form = ({ users, searchInput, dropdownValue, filteredUsersList, searchDone
       <button id="button" type="submit">Submit</button>
     </form>
   );
-}
+};
 
 
 export default Form;

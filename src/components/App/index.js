@@ -4,11 +4,19 @@ import Form from 'src/containers/Form';
 import Table from 'src/containers/Table';
 import './app.scss';
 
-const App = () => (
-  <div id="app">
-    <Form />
-    <Table />
-  </div>
-);
+const App = ({ reset }) => {
+  const handleReset = (event) => {
+    console.log('reset');
+    event.preventDefault();
+    reset();
+  };
+  return (
+    <div id="app">
+      <Form />
+      <Table />
+      <button id="reset" type="submit" onClick={handleReset}>Reset</button>
+    </div>
+  );
+}
 
 export default App;
