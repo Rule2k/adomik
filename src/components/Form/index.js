@@ -8,6 +8,7 @@ const Form = () => (
   <form id="form">
     <Dropdown />
     <Search />
+    <button type="button">Submit</button>
   </form>
 );
 
