@@ -1,0 +1,9 @@
+#dropdown {
+  width: 10%;
+  background-color: grey;
+  color: white;
+  border: none;
+  & :disabled {
+    color: #000;
+}
+}

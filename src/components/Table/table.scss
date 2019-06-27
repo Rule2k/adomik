@@ -1,0 +1,23 @@
+#table {
+  margin: 2em auto;
+  & thead {
+    font-weight: bold;
+    font-size: 1.2em;
+    background-color: grey;
+    color: white;
+  }
+  & tbody {
+    margin-top: 2em;
+    & tr:nth-child(even){
+    background-color: #f5f5f5;
+    }
+    & tr:hover {
+    background-color: rgb(235, 235, 235);
+    }
+  }
+  & td {
+    border: 1px solid grey;
+    padding: 8px;
+  }
+
+}

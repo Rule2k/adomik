@@ -1,6 +1,7 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
 
+import './dropdown.scss';
 
 class Dropdown extends React.Component {
   componentDidMount() {

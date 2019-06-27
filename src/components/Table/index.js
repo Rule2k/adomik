@@ -1,8 +1,8 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
+import './table.scss';
 
 const Table = ({ users, searchInput, dropdownValue }) => {
-
   const getFilteredSearch = () => {
     let currentList = [];
     let filteredList = [];
@@ -16,9 +16,14 @@ const Table = ({ users, searchInput, dropdownValue }) => {
         const nomEtPrenomLowerCase = user.prenom.toLowerCase() + user.nom.toLowerCase();
         const searchInputFilter = searchInput.toLowerCase().replace(/\s/g, '');
         const dropdownValueFilter = dropdownValue.toLowerCase().replace(/\s/g, '');
-        return (nomEtPrenomLowerCase.includes(searchInputFilter)) && (villeLowerCase === dropdownValueFilter);
+
+        return (
+          nomEtPrenomLowerCase.includes(searchInputFilter)) 
+          && (villeLowerCase === dropdownValueFilter
+          );
       });
-    } else {
+    }
+    else {
       filteredList = users;
     }
     return filteredList;
