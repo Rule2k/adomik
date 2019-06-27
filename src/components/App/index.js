@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Form from 'src/components/Form';
-import Table from 'src/components/Table';
+import Table from 'src/containers/Table';
 import './app.scss';
 
 const App = () => (

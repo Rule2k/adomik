@@ -1,7 +1,7 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
 
-const Table = () => (
+const Table = ({ users }) => (
   <table id="table">
     <thead>
       <tr>
@@ -13,13 +13,17 @@ const Table = () => (
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Paris</td>
-        <td>Giacomo</td>
-        <td>Guilizzoni</td>
-        <td>admin</td>
-      </tr>
+      {
+        users.map(user => (
+          <tr key={user.id}>
+            <td>{user.id}</td>
+            <td>{user.ville}</td>
+            <td>{user.prenom}</td>
+            <td>{user.nom}</td>
+            <td>{user.right}</td>
+          </tr>
+        ))
+      }
     </tbody>
   </table>
 
