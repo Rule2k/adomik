@@ -1,10 +1,14 @@
 import React from 'react';
 
-import Example from 'src/containers/Example';
+import Form from 'src/components/Form';
+import Table from 'src/components/Table';
 import './app.scss';
 
 const App = () => (
-  <Example />
+  <div id="app">
+    <Form />
+    <Table />
+  </div>
 );
 
 export default App;
