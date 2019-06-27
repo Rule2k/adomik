@@ -11,12 +11,12 @@ const Table = ({ users, searchInput, dropdownValue }) => {
       city = dropdownValue;
       currentList = users;
       filteredList = currentList.filter((user) => {
-        const prenomLowerCase = user.prenom.toLowerCase();
-        const nomLowerCase = user.nom.toLowerCase();
+
         const villeLowerCase = user.ville.toLowerCase();
-        const searchInputFilter = searchInput.toLowerCase();
-        const dropdownValueFilter = dropdownValue.toLowerCase();
-        return (prenomLowerCase.includes(searchInputFilter) || nomLowerCase.includes(searchInputFilter)) && (villeLowerCase === dropdownValueFilter);
+        const nomEtPrenomLowerCase = user.prenom.toLowerCase() + user.nom.toLowerCase();
+        const searchInputFilter = searchInput.toLowerCase().replace(/\s/g, '');
+        const dropdownValueFilter = dropdownValue.toLowerCase().replace(/\s/g, '');
+        return (nomEtPrenomLowerCase.includes(searchInputFilter)) && (villeLowerCase === dropdownValueFilter);
       });
     } else {
       filteredList = users;
@@ -25,7 +25,7 @@ const Table = ({ users, searchInput, dropdownValue }) => {
   };
   return (
     <div id="main">
-      {searchInput ? <p>{getFilteredSearch().length} résultat{getFilteredSearch().length > 1 ? 's' : null} pour {searchInput} à {dropdownValue}</p> : null}
+      {searchInput ? <p>{getFilteredSearch().length} résultat{getFilteredSearch().length > 1 ? 's' : null} pour {searchInput} à {dropdownValue}</p> : <p>Tapez une recherche</p> }
       <table id="table">
         <thead>
           <tr>
