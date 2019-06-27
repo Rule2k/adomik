@@ -14,7 +14,6 @@ const Middleware = store => next => (action) => {
       axios.get(`${url}/users`, {
       })
         .then((result) => {
-          console.log(result.data);
           store.dispatch(usersReceived(result.data));
         })
         .catch((error) => {
@@ -26,8 +25,7 @@ const Middleware = store => next => (action) => {
       axios.get(`${url}/components`, {
       })
         .then((result) => {
-          console.log(result.data);
-          store.dispatch(componentsReceived(result.data.components));
+          store.dispatch(componentsReceived(result.data.components[0].children[0].children[0].children[0].data));
         })
         .catch((error) => {
           console.log(error);
