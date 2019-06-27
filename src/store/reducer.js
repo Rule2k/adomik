@@ -4,6 +4,7 @@
 const initialState = {
   users: [],
   components: [],
+  searchInput: '',
 };
 
 /**
@@ -13,6 +14,8 @@ export const LOAD_USERS = 'LOAD_USERS';
 export const LOAD_COMPONENTS = 'LOAD_COMPONENTS';
 const USERS_RECEIVED = 'USERS_RECEIVED';
 const COMPONENTS_RECEIVED = 'COMPONENTS_RECEIVED';
+const INPUT_HAS_CHANGED = 'INPUT_HAS_CHANGED';
+
 
 /**
  * Traitements
@@ -32,6 +35,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         components: action.components,
+      };
+    case INPUT_HAS_CHANGED:
+      return {
+        ...state,
+        searchInput: action.input,
       };
     default:
       return state;
@@ -58,6 +66,12 @@ export const componentsReceived = components => ({
   type: COMPONENTS_RECEIVED,
   components,
 });
+
+export const inputChanged = input => ({
+  type: INPUT_HAS_CHANGED,
+  input,
+});
+
 
 /**
  * Selectors

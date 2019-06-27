@@ -2,7 +2,7 @@ import React from 'react';
 import PropsTypes from 'prop-types';
 
 import Dropdown from 'src/components/Dropdown';
-import Search from 'src/components/Search';
+import Search from 'src/containers/Search';
 
 const Form = () => (
   <form id="form">
