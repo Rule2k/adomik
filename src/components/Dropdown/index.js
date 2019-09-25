@@ -6,17 +6,19 @@ import './dropdown.scss';
 class Dropdown extends React.Component {
   // permet d'envoyer dans le store de redux la valeur du premier item du dropdown
   // (sinon il serait vide par défaut et cela causerait des bugs dans l'application)
-  componentDidUpdate() {
+  componentDidMount() {
     const { dropdownValueHasChanged } = this.props;
     dropdownValueHasChanged(document.getElementById('dropdown').value);
   }
 
   render() {
-    const { dropdownValueHasChanged, dropdownValue, city } = this.props;
+    const { dropdownValueHasChanged, dropdownValue, components } = this.props;
     // permet de mettre à jour la valeur de l'item du dropdown dans le store de redux
     const handleNewValue = event => (
       dropdownValueHasChanged(event.target.value)
     );
+
+    const city = components.data;
     // génère la liste du dropdown, issu du store de redux
     return (
       <select id="dropdown" onChange={handleNewValue} value={dropdownValue}>
@@ -34,10 +36,7 @@ class Dropdown extends React.Component {
 Dropdown.propTypes = {
   dropdownValueHasChanged: PropTypes.func.isRequired,
   dropdownValue: PropTypes.string.isRequired,
-  city: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string,
-    label: PropTypes.string,
-  })).isRequired,
+  components: PropTypes.object.isRequired,
 };
 
 

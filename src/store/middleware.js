@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  LOAD_COMPONENTS, LOAD_USERS, usersReceived, componentsReceived,
+  LOAD_COMPONENTS, LOAD_USERS, LOAD_CITIES, usersReceived, componentsReceived, citiesReceived,
 } from './reducer';
 
 const url = 'http://localhost:3000/api';
@@ -9,8 +9,8 @@ const url = 'http://localhost:3000/api';
 
 const Middleware = store => next => (action) => {
   switch (action.type) {
-    // charge la liste des composants et la dispatch dans le reducer
-    case LOAD_COMPONENTS:
+    // charge la liste des users et la dispatch dans le reducer
+    case LOAD_USERS:
       axios.get(`${url}/users`, {
       })
         .then((result) => {
@@ -20,13 +20,12 @@ const Middleware = store => next => (action) => {
           console.log(error);
         });
       break;
-    // charge la liste des users et la dispatch dans le reducer
-    case LOAD_USERS:
+    // charge la liste des composants et la dispatch dans le reducer
+    case LOAD_COMPONENTS:
       axios.get(`${url}/components`, {
       })
         .then((result) => {
-          // eslint-disable-next-line max-len
-          store.dispatch(componentsReceived(result.data.components[0].children[0].children[0].children[0].data));
+          store.dispatch(componentsReceived(result.data.components));
         })
         .catch((error) => {
           console.log(error);

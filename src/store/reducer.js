@@ -1,4 +1,3 @@
-
 /**
  * Initial State
  */
@@ -12,15 +11,18 @@ const initialState = {
   searchDone: false,
   fixedCity: '',
   fixedInput: '',
+  loading: true,
 };
 
 /**
  * Types
  */
+
 export const LOAD_USERS = 'LOAD_USERS';
 export const LOAD_COMPONENTS = 'LOAD_COMPONENTS';
 const USERS_RECEIVED = 'USERS_RECEIVED';
 const COMPONENTS_RECEIVED = 'COMPONENTS_RECEIVED';
+const CITIES_RECEIVED = 'CITIES_RECEIVED';
 const INPUT_HAS_CHANGED = 'INPUT_HAS_CHANGED';
 const DROPDOWN_VALUE_HAS_CHANGED = 'DROPDOWN_VALUE_HAS_CHANGED';
 const FILTERED_USERS_LIST = 'FILTERED_USERS_LIST';
@@ -28,10 +30,6 @@ const SEARCH_DONE = 'SEARCH_DONE';
 const FIXED_INPUT = 'FIXED_INPUT';
 const FIXED_CITY = 'FIXED_CITY';
 const RESET = 'RESET';
-
-/**
- * Traitements
- */
 
 /**
  * Reducer
@@ -47,6 +45,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         components: action.components,
+        loading: false,
       };
     case INPUT_HAS_CHANGED:
       return {
@@ -113,6 +112,11 @@ export const usersReceived = users => ({
 export const componentsReceived = components => ({
   type: COMPONENTS_RECEIVED,
   components,
+});
+
+export const citiesReceived = cities => ({
+  type: CITIES_RECEIVED,
+  cities,
 });
 
 export const inputChanged = input => ({

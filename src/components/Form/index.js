@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Dropdown from 'src/containers/Dropdown';
-import Search from 'src/containers/Search';
-
 import './form.scss';
 
 const Form = ({
-  users, searchInput, dropdownValue, filteredUsersList, searchDone, fixedCity, fixedInput
+  users, searchInput, dropdownValue, filteredUsersList, searchDone, fixedCity, fixedInput, children, components
 }) => {
   // fonction permettant de trier la liste des utilisateurs
   // en fonction de la recherche et de la valeur du dropdown
@@ -56,8 +53,7 @@ const Form = ({
   };
   return (
     <form id="form" onSubmit={handleSubmit}>
-      <Dropdown />
-      <Search />
+      { children }
       <button id="button" type="submit">Submit</button>
     </form>
   );
@@ -77,6 +73,7 @@ Form.propTypes = {
     nom: PropTypes.string.isRequired,
     right: PropTypes.string.isRequired,
   })).isRequired,
+  children: PropTypes.object.isRequired,
 };
 
 

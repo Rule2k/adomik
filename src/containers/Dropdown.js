@@ -6,7 +6,6 @@ import { dropdownValueHasChanged } from 'src/store/reducer';
 
 const mapStateToProps = (state, ownProps) => ({
   dropdownValue: state.dropdownValue,
-  city: state.components,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
